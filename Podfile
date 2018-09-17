@@ -12,5 +12,7 @@ pod 'SwiftyJSON'
 pod 'RxAlamofire'
 pod 'Kingfisher'
 pod 'ESPullToRefresh'
+pod 'Moya'
+pod 'ObjectMapper'
 
 end

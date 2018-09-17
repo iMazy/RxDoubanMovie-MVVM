@@ -7,6 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		642BACBF214FCC760038D4D8 /* MovieModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 642BACBE214FCC760038D4D8 /* MovieModel.swift */; };
+		64520B58214A928D00C1332D /* DBNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64520B57214A928D00C1332D /* DBNetworkService.swift */; };
+		64520B60214A997200C1332D /* ObserverType+ObjectMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64520B5A214A997200C1332D /* ObserverType+ObjectMapper.swift */; };
+		64520B61214A997200C1332D /* Observable+Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64520B5B214A997200C1332D /* Observable+Response.swift */; };
+		64520B62214A997200C1332D /* MoyaProvider+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64520B5C214A997200C1332D /* MoyaProvider+Rx.swift */; };
+		64520B63214A997200C1332D /* Single+Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64520B5D214A997200C1332D /* Single+Response.swift */; };
+		64520B64214A997200C1332D /* Single+MoyaObjectMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64520B5E214A997200C1332D /* Single+MoyaObjectMapper.swift */; };
+		64520B65214A997200C1332D /* Response+ObjectMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64520B5F214A997200C1332D /* Response+ObjectMapper.swift */; };
 		64C82BB72147F4870083116F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64C82BB62147F4870083116F /* AppDelegate.swift */; };
 		64C82BB92147F4870083116F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64C82BB82147F4870083116F /* ViewController.swift */; };
 		64C82BBC2147F4870083116F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 64C82BBA2147F4870083116F /* Main.storyboard */; };
@@ -17,6 +25,14 @@
 
 /* Begin PBXFileReference section */
 		4C6C76A9EBF870393AAD6425 /* Pods-RxDoubanMovie.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RxDoubanMovie.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RxDoubanMovie/Pods-RxDoubanMovie.debug.xcconfig"; sourceTree = "<group>"; };
+		642BACBE214FCC760038D4D8 /* MovieModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieModel.swift; sourceTree = "<group>"; };
+		64520B57214A928D00C1332D /* DBNetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBNetworkService.swift; sourceTree = "<group>"; };
+		64520B5A214A997200C1332D /* ObserverType+ObjectMapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ObserverType+ObjectMapper.swift"; sourceTree = "<group>"; };
+		64520B5B214A997200C1332D /* Observable+Response.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Observable+Response.swift"; sourceTree = "<group>"; };
+		64520B5C214A997200C1332D /* MoyaProvider+Rx.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MoyaProvider+Rx.swift"; sourceTree = "<group>"; };
+		64520B5D214A997200C1332D /* Single+Response.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Single+Response.swift"; sourceTree = "<group>"; };
+		64520B5E214A997200C1332D /* Single+MoyaObjectMapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Single+MoyaObjectMapper.swift"; sourceTree = "<group>"; };
+		64520B5F214A997200C1332D /* Response+ObjectMapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Response+ObjectMapper.swift"; sourceTree = "<group>"; };
 		64C82BB32147F4870083116F /* RxDoubanMovie.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RxDoubanMovie.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		64C82BB62147F4870083116F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		64C82BB82147F4870083116F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -48,6 +64,27 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		64520B56214A926D00C1332D /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				64520B57214A928D00C1332D /* DBNetworkService.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		64520B59214A997200C1332D /* RxMoya */ = {
+			isa = PBXGroup;
+			children = (
+				64520B5A214A997200C1332D /* ObserverType+ObjectMapper.swift */,
+				64520B5B214A997200C1332D /* Observable+Response.swift */,
+				64520B5C214A997200C1332D /* MoyaProvider+Rx.swift */,
+				64520B5D214A997200C1332D /* Single+Response.swift */,
+				64520B5E214A997200C1332D /* Single+MoyaObjectMapper.swift */,
+				64520B5F214A997200C1332D /* Response+ObjectMapper.swift */,
+			);
+			path = RxMoya;
+			sourceTree = "<group>";
+		};
 		64C82BAA2147F4870083116F = {
 			isa = PBXGroup;
 			children = (
@@ -69,8 +106,11 @@
 		64C82BB52147F4870083116F /* RxDoubanMovie */ = {
 			isa = PBXGroup;
 			children = (
+				64520B56214A926D00C1332D /* Network */,
 				64C82BB62147F4870083116F /* AppDelegate.swift */,
 				64C82BB82147F4870083116F /* ViewController.swift */,
+				642BACBE214FCC760038D4D8 /* MovieModel.swift */,
+				64520B59214A997200C1332D /* RxMoya */,
 				64C82BBA2147F4870083116F /* Main.storyboard */,
 				64C82BBD2147F4880083116F /* Assets.xcassets */,
 				64C82BBF2147F4880083116F /* LaunchScreen.storyboard */,
@@ -168,6 +208,9 @@
 				"${BUILT_PRODUCTS_DIR}/Differentiator/Differentiator.framework",
 				"${BUILT_PRODUCTS_DIR}/ESPullToRefresh/ESPullToRefresh.framework",
 				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
+				"${BUILT_PRODUCTS_DIR}/Moya/Moya.framework",
+				"${BUILT_PRODUCTS_DIR}/ObjectMapper/ObjectMapper.framework",
+				"${BUILT_PRODUCTS_DIR}/Result/Result.framework",
 				"${BUILT_PRODUCTS_DIR}/RxAlamofire/RxAlamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
 				"${BUILT_PRODUCTS_DIR}/RxDataSources/RxDataSources.framework",
@@ -180,6 +223,9 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Differentiator.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ESPullToRefresh.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Moya.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ObjectMapper.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Result.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxAlamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxDataSources.framework",
@@ -216,8 +262,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				64520B61214A997200C1332D /* Observable+Response.swift in Sources */,
 				64C82BB92147F4870083116F /* ViewController.swift in Sources */,
+				642BACBF214FCC760038D4D8 /* MovieModel.swift in Sources */,
+				64520B65214A997200C1332D /* Response+ObjectMapper.swift in Sources */,
+				64520B58214A928D00C1332D /* DBNetworkService.swift in Sources */,
+				64520B63214A997200C1332D /* Single+Response.swift in Sources */,
 				64C82BB72147F4870083116F /* AppDelegate.swift in Sources */,
+				64520B62214A997200C1332D /* MoyaProvider+Rx.swift in Sources */,
+				64520B60214A997200C1332D /* ObserverType+ObjectMapper.swift in Sources */,
+				64520B64214A997200C1332D /* Single+MoyaObjectMapper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -362,7 +416,8 @@
 			baseConfigurationReference = 4C6C76A9EBF870393AAD6425 /* Pods-RxDoubanMovie.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = RxDoubanMovie/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -371,6 +426,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.gsae.RxDoubanMovie;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -381,7 +437,8 @@
 			baseConfigurationReference = 82AE9C5C0A7AE3D5116B6689 /* Pods-RxDoubanMovie.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = RxDoubanMovie/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -390,6 +447,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.gsae.RxDoubanMovie;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
