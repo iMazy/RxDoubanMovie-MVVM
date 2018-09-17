@@ -14,5 +14,6 @@ pod 'Kingfisher'
 pod 'ESPullToRefresh'
 pod 'Moya'
 pod 'ObjectMapper'
+pod 'SnapKit'
 
 end

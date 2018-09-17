@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		642BACBF214FCC760038D4D8 /* MovieModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 642BACBE214FCC760038D4D8 /* MovieModel.swift */; };
+		642BACC1214FD5950038D4D8 /* ESPullToRefresh+Ex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 642BACC0214FD5950038D4D8 /* ESPullToRefresh+Ex.swift */; };
 		64520B58214A928D00C1332D /* DBNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64520B57214A928D00C1332D /* DBNetworkService.swift */; };
 		64520B60214A997200C1332D /* ObserverType+ObjectMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64520B5A214A997200C1332D /* ObserverType+ObjectMapper.swift */; };
 		64520B61214A997200C1332D /* Observable+Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64520B5B214A997200C1332D /* Observable+Response.swift */; };
@@ -26,6 +27,7 @@
 /* Begin PBXFileReference section */
 		4C6C76A9EBF870393AAD6425 /* Pods-RxDoubanMovie.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RxDoubanMovie.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RxDoubanMovie/Pods-RxDoubanMovie.debug.xcconfig"; sourceTree = "<group>"; };
 		642BACBE214FCC760038D4D8 /* MovieModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieModel.swift; sourceTree = "<group>"; };
+		642BACC0214FD5950038D4D8 /* ESPullToRefresh+Ex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ESPullToRefresh+Ex.swift"; sourceTree = "<group>"; };
 		64520B57214A928D00C1332D /* DBNetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBNetworkService.swift; sourceTree = "<group>"; };
 		64520B5A214A997200C1332D /* ObserverType+ObjectMapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ObserverType+ObjectMapper.swift"; sourceTree = "<group>"; };
 		64520B5B214A997200C1332D /* Observable+Response.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Observable+Response.swift"; sourceTree = "<group>"; };
@@ -110,6 +112,7 @@
 				64C82BB62147F4870083116F /* AppDelegate.swift */,
 				64C82BB82147F4870083116F /* ViewController.swift */,
 				642BACBE214FCC760038D4D8 /* MovieModel.swift */,
+				642BACC0214FD5950038D4D8 /* ESPullToRefresh+Ex.swift */,
 				64520B59214A997200C1332D /* RxMoya */,
 				64C82BBA2147F4870083116F /* Main.storyboard */,
 				64C82BBD2147F4880083116F /* Assets.xcassets */,
@@ -215,6 +218,7 @@
 				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
 				"${BUILT_PRODUCTS_DIR}/RxDataSources/RxDataSources.framework",
 				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
@@ -230,6 +234,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxDataSources.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -272,6 +277,7 @@
 				64520B62214A997200C1332D /* MoyaProvider+Rx.swift in Sources */,
 				64520B60214A997200C1332D /* ObserverType+ObjectMapper.swift in Sources */,
 				64520B64214A997200C1332D /* Single+MoyaObjectMapper.swift in Sources */,
+				642BACC1214FD5950038D4D8 /* ESPullToRefresh+Ex.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

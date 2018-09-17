@@ -63,7 +63,7 @@ extension DBNetworkAPI: TargetType {
         case .inTheaters:
             return .requestParameters(parameters: ["start":"0", "count":"1"], encoding: URLEncoding.default)
         case .top250(let page):
-            return .requestParameters(parameters: ["start":page, "count":"10"], encoding: URLEncoding.default)
+            return .requestParameters(parameters: ["start":page, "count":"5"], encoding: URLEncoding.default)
         default:
             return .requestPlain
         }
