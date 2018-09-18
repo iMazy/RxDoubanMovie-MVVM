@@ -21,6 +21,9 @@ class ViewController: UIViewController {
     var currentPage: Int = 0
     var dataSource: [MovieModel] = []
     
+    var viewModel: MovieViewModel = MovieViewModel()
+    private var vmOutput: MovieViewModel.Output?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -29,22 +32,35 @@ class ViewController: UIViewController {
         
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cellid")
         
-        tableView.es.addPullToRefresh(animator: GSRefreshHeaderAnimator()) { [weak self] in
-            self?.currentPage = 0
-            self?.loadDataWithPage(page: 0)
-        }
         
-        tableView.es.addInfiniteScrolling(animator: GSRefreshFooterAnimator()) { [weak self] in
-            let page = (self?.currentPage ?? 0) + 1
-            self?.loadDataWithPage(page: page)
-        }
+        let input = MovieViewModel.Input()
+        vmOutput = viewModel.transform(input: input)
         
-        
-        movieObservable.bind(to: tableView.rx.items) { tableView, row, element in
+        vmOutput?.sections.asObservable().bind(to: tableView.rx.items) { tableView, row, element in
             let cell = tableView.dequeueReusableCell(withIdentifier: "cellid")!
             cell.textLabel?.text = element.title
             return cell
-        }.disposed(by: disposeBag)
+            }.disposed(by: disposeBag)
+        
+//        movieObservable.bind(to: tableView.rx.items) { tableView, row, element in
+//            let cell = tableView.dequeueReusableCell(withIdentifier: "cellid")!
+//            cell.textLabel?.text = element.title
+//            return cell
+//        }.disposed(by: disposeBag)
+        
+        
+        tableView.es.addPullToRefresh(animator: GSRefreshHeaderAnimator()) {
+            input.requestCommand.onNext(false)
+        }
+        
+        tableView.es.addInfiniteScrolling(animator: GSRefreshFooterAnimator()) {
+            input.requestCommand.onNext(true)
+        }
+        
+        vmOutput?.refreshEnd.asObservable().subscribe(onNext: { _ in
+            self.tableView.es.stopLoadingMore()
+            self.tableView.es.stopPullToRefresh()
+        }).disposed(by: disposeBag)
     }
 
 }
@@ -65,10 +81,12 @@ extension ViewController {
                     self.tableView.es.stopLoadingMore()
                     self.dataSource = top250.subject
                     self.movieObservable.accept(top250.subject)
+                    print(self.dataSource)
                 } else {
                     self.tableView.es.stopLoadingMore()
                     self.currentPage = page
                     self.dataSource += top250.subject
+                    print(self.dataSource)
 //                    var currentMovies = self.movieObservable.value
 //                    currentMovies += top250.subject
                     self.movieObservable.accept(self.dataSource)

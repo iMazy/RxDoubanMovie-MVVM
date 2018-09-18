@@ -9,6 +9,7 @@
 import Foundation
 import RxSwift
 import RxCocoa
+import SwiftyJSON
 
 protocol XMViewModelType {
     
@@ -20,8 +21,9 @@ protocol XMViewModelType {
 
 class MovieViewModel {
     var disposeBag = DisposeBag()
-    private var vmDatas = BehaviorRelay<[String]>(value: [])
-    private var page: Int = 1
+    private var vmDatas = BehaviorRelay<[MovieModel]>(value: [])
+    private var currentPage: Int = 0
+    var dataSource: [MovieModel] = []
 }
 
 extension MovieViewModel: XMViewModelType {
@@ -31,20 +33,42 @@ extension MovieViewModel: XMViewModelType {
     }
     
     struct Output {
-        let sections: Driver<[String]>
+        let sections: Driver<[MovieModel]>
         let refreshEnd = Variable<Bool>(false)
-        init(sections: Driver<[String]>) {
+        init(sections: Driver<[MovieModel]>) {
             self.sections = sections
         }
     }
     
     func transform(input: MovieViewModel.Input) -> MovieViewModel.Output {
+        
         let tempSections = vmDatas.asObservable().asDriver(onErrorJustReturn: [])
         let output = Output(sections: tempSections)
         
-        input.requestCommand.subscribe(onNext: { [weak self] isPull in
+        input.requestCommand.subscribe(onNext: { [unowned self] loadMore in
+      
+            let page = loadMore ? self.currentPage + 5 : 0
+            DBNetworkProvider.rx.request(.top250("\(page)"))
+                .subscribe(onSuccess: { data in
+                    output.refreshEnd.value = true
+                    // 数据处理
+                    guard let json = try? JSON(data: data.data) else { return }
+                    
+                    let top250 = Top250(json: json)
+                    if page == 0 {
+                        self.vmDatas.accept(top250.subject)
+                        self.dataSource = top250.subject
+                    } else {
+                        self.currentPage = page
+                        self.dataSource += top250.subject
+                        self.vmDatas.accept(self.dataSource)
+                    }
+                }, onError: { error in
+                    print("数据请求失败! 错误原因: ", error)
+                }).disposed(by: self.disposeBag)
             
         }).disposed(by: disposeBag)
+        
         return output
     }
 }
