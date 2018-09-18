@@ -23,7 +23,7 @@ class MovieViewModel {
     var disposeBag = DisposeBag()
     private var vmDatas = BehaviorRelay<[MovieModel]>(value: [])
     private var currentPage: Int = 0
-    var dataSource: [MovieModel] = []
+    private var dataSource: [MovieModel] = []
 }
 
 extension MovieViewModel: XMViewModelType {
@@ -34,7 +34,7 @@ extension MovieViewModel: XMViewModelType {
     
     struct Output {
         let sections: Driver<[MovieModel]>
-        let refreshEnd = Variable<Bool>(false)
+        let refreshEnd = BehaviorRelay<Bool>(value: false)
         init(sections: Driver<[MovieModel]>) {
             self.sections = sections
         }
@@ -50,7 +50,7 @@ extension MovieViewModel: XMViewModelType {
             let page = loadMore ? self.currentPage + 5 : 0
             DBNetworkProvider.rx.request(.top250("\(page)"))
                 .subscribe(onSuccess: { data in
-                    output.refreshEnd.value = true
+                    output.refreshEnd.accept(loadMore)
                     // 数据处理
                     guard let json = try? JSON(data: data.data) else { return }
                     
