@@ -21,7 +21,7 @@ protocol XMViewModelType {
 
 class MovieViewModel {
     var disposeBag = DisposeBag()
-    private var vmDatas = BehaviorRelay<[MovieModel]>(value: [])
+    private var models = BehaviorRelay<[MovieModel]>(value: [])
     private var currentPage: Int = 0
     private var dataSource: [MovieModel] = []
 }
@@ -29,12 +29,16 @@ class MovieViewModel {
 extension MovieViewModel: XMViewModelType {
     
     struct Input {
+         // 外界通过该属性告诉viewModel加载数据（传入的值是为了标志是否重新加载）
         let requestCommand = PublishSubject<Bool>()
     }
     
     struct Output {
+        // tableView的sections数据
         let sections: Driver<[MovieModel]>
+        // 告诉外界的tableView当前的刷新状态
         let refreshEnd = BehaviorRelay<Bool>(value: false)
+        
         init(sections: Driver<[MovieModel]>) {
             self.sections = sections
         }
@@ -42,7 +46,7 @@ extension MovieViewModel: XMViewModelType {
     
     func transform(input: MovieViewModel.Input) -> MovieViewModel.Output {
         
-        let tempSections = vmDatas.asObservable().asDriver(onErrorJustReturn: [])
+        let tempSections = models.asObservable().asDriver(onErrorJustReturn: [])
         let output = Output(sections: tempSections)
         
         input.requestCommand.subscribe(onNext: { [unowned self] loadMore in
@@ -56,12 +60,10 @@ extension MovieViewModel: XMViewModelType {
                     
                     let top250 = Top250(json: json)
                     if page == 0 {
-                        self.vmDatas.accept(top250.subject)
-                        self.dataSource = top250.subject
+                        self.models.accept(top250.subject)
                     } else {
                         self.currentPage = page
-                        self.dataSource += top250.subject
-                        self.vmDatas.accept(self.dataSource)
+                        self.models.accept(self.models.value + top250.subject)
                     }
                 }, onError: { error in
                     print("数据请求失败! 错误原因: ", error)
