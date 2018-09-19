@@ -40,7 +40,7 @@ struct MovieModel {
     var title: String
     var year: Int
     var genres: [String]
-    var images: [String]
+    var image: String
     var directors: [Director]
     
     init(json: JSON) {
@@ -50,7 +50,7 @@ struct MovieModel {
         self.title         = json["title"].stringValue
         self.year          = json["year"].intValue
         self.genres        = json["genres"].arrayValue.map({ $0.stringValue })
-        self.images        = json["images"].arrayValue.map({ $0.stringValue })
+        self.image        = json["images"].dictionaryValue["medium"]!.stringValue
         self.directors     = json["directors"].arrayValue.map({ Director(json: $0) })
     }
 }

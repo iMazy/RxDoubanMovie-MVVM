@@ -27,16 +27,17 @@ class ViewController: UIViewController {
         navigationItem.title = "RxSwift + MVVM + Refresh"
         
         tableView = UITableView(frame: view.bounds, style: .plain)
+        tableView.rowHeight = 120
         view.addSubview(tableView)
         
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cellid")
+        tableView.register(UINib(nibName: "MovieTableViewCell", bundle: nil), forCellReuseIdentifier: "MovieTableViewCell")
         
         let input = MovieViewModel.Input()
         vmOutput = viewModel.transform(input: input)
         
         vmOutput?.sections.asObservable().bind(to: tableView.rx.items) { tableView, row, element in
-            let cell = tableView.dequeueReusableCell(withIdentifier: "cellid")!
-            cell.textLabel?.text = element.title
+            let cell = tableView.dequeueReusableCell(withIdentifier: "MovieTableViewCell") as! MovieTableViewCell
+            cell.configWithModel(element)
             return cell
             }.disposed(by: disposeBag)
         
