@@ -50,7 +50,6 @@ class ViewController: UIViewController {
         }
         
         vmOutput?.refreshStatus.subscribe(onNext: { [weak self] status in
-            print(status)
             switch status {
             case .endHeaderRefresh:
                 self?.tableView.es.stopPullToRefresh()

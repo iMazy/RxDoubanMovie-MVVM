@@ -41,6 +41,7 @@ class MovieTableViewCell: UITableViewCell {
         directorLabel.text = model.directors.first?.name
         yearLabel.text = "\(model.year)"
         
+        print(model.image)
         posterImageView.setImage(with: URL(string: model.image))
         
         genresStackView.arrangedSubviews.filter({ $0.tag != 888 }).forEach({ $0.removeFromSuperview() })
@@ -48,6 +49,7 @@ class MovieTableViewCell: UITableViewCell {
             let label = UILabel()
             label.font = UIFont.systemFont(ofSize: 12)
             label.textAlignment = .center
+            label.textColor = UIColor.darkGray
             label.backgroundColor = UIColor(white: 0.9, alpha: 1)
             label.text = " \(title)  "
             label.cornerRadius = 10
@@ -57,12 +59,11 @@ class MovieTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        
+        selectionStyle = .none
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
         // Configure the view for the selected state
     }
     
