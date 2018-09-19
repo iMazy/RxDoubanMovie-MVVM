@@ -37,7 +37,7 @@ extension MovieViewModel: XMViewModelType {
         // tableView的sections数据
         let sections: Driver<[MovieModel]>
         // 告诉外界的tableView当前的刷新状态
-        let refreshEnd = BehaviorRelay<Bool>(value: false)
+        let refreshStatus = BehaviorRelay<RefreshStatus>(value: .none)
         
         init(sections: Driver<[MovieModel]>) {
             self.sections = sections
@@ -50,11 +50,11 @@ extension MovieViewModel: XMViewModelType {
         let output = Output(sections: tempSections)
         
         input.requestCommand.subscribe(onNext: { [unowned self] loadMore in
-      
+            
             let page = loadMore ? self.currentPage + 5 : 0
             DBNetworkProvider.rx.request(.top250("\(page)"))
                 .subscribe(onSuccess: { data in
-                    output.refreshEnd.accept(loadMore)
+                    output.refreshStatus.accept(loadMore ? .endFooterRefresh : .endHeaderRefresh)
                     // 数据处理
                     guard let json = try? JSON(data: data.data) else { return }
                     
@@ -66,6 +66,7 @@ extension MovieViewModel: XMViewModelType {
                         self.models.accept(self.models.value + top250.subject)
                     }
                 }, onError: { error in
+                    output.refreshStatus.accept(loadMore ? .endFooterRefresh : .endHeaderRefresh)
                     print("数据请求失败! 错误原因: ", error)
                 }).disposed(by: self.disposeBag)
             

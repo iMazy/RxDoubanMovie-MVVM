@@ -10,6 +10,15 @@ import UIKit
 import SnapKit
 import ESPullToRefresh
 
+enum RefreshStatus {
+    case none
+    case beginHeaderRefresh
+    case endHeaderRefresh
+    case beginFooterRefresh
+    case endFooterRefresh
+    case noMoreData
+}
+
 extension UIDevice {
     var isIPhoneX: Bool {
         return userInterfaceIdiom == .phone && UIScreen.main.nativeBounds.height == 2436

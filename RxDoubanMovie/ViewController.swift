@@ -48,11 +48,17 @@ class ViewController: UIViewController {
             input.requestCommand.onNext(true)
         }
         
-        vmOutput?.refreshEnd.asObservable().subscribe(onNext: { loadMore in
-            if loadMore {
-                self.tableView.es.stopLoadingMore()
-            } else {
-                self.tableView.es.stopPullToRefresh()
+        vmOutput?.refreshStatus.subscribe(onNext: { [weak self] status in
+            print(status)
+            switch status {
+            case .endHeaderRefresh:
+                self?.tableView.es.stopPullToRefresh()
+            case .endFooterRefresh:
+                self?.tableView.es.stopLoadingMore()
+            case .noMoreData:
+                self?.tableView.es.noticeNoMoreData()
+            default:
+                break
             }
         }).disposed(by: disposeBag)
         
