@@ -25,6 +25,13 @@ struct Top250 {
     
 }
 
+struct Director {
+    var name: String
+    init(json: JSON) {
+        self.name = json["name"].stringValue
+    }
+}
+
 struct MovieModel {
     
     var id: String
@@ -32,6 +39,9 @@ struct MovieModel {
     var subtype: String
     var title: String
     var year: Int
+    var genres: [String]
+    var images: [String]
+    var directors: [Director]
     
     init(json: JSON) {
         self.id            = json["id"].stringValue
@@ -39,5 +49,10 @@ struct MovieModel {
         self.subtype       = json["subtype"].stringValue
         self.title         = json["title"].stringValue
         self.year          = json["year"].intValue
+        self.genres        = json["genres"].arrayValue.map({ $0.stringValue })
+        self.images        = json["images"].arrayValue.map({ $0.stringValue })
+        self.directors     = json["directors"].arrayValue.map({ Director(json: $0) })
     }
 }
+
+

@@ -57,7 +57,7 @@ extension MovieViewModel: XMViewModelType {
                     output.refreshStatus.accept(loadMore ? .endFooterRefresh : .endHeaderRefresh)
                     // 数据处理
                     guard let json = try? JSON(data: data.data) else { return }
-                    
+                    print(json)
                     let top250 = Top250(json: json)
                     if page == 0 {
                         self.models.accept(top250.subject)
