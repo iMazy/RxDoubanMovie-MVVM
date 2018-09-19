@@ -40,8 +40,6 @@ class MovieTableViewCell: UITableViewCell {
         movieNameLabel.text = model.title
         directorLabel.text = model.directors.first?.name
         yearLabel.text = "\(model.year)"
-        
-        print(model.image)
         posterImageView.setImage(with: URL(string: model.image))
         
         genresStackView.arrangedSubviews.filter({ $0.tag != 888 }).forEach({ $0.removeFromSuperview() })
